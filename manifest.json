@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Web Radar Collector",
+  "description": "Manual web page text and media collector for local research tasks.",
+  "version": "0.1.0",
+  "permissions": ["alarms", "downloads", "scripting", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Web Radar Collector",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

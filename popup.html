@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Radar Collector</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header class="topbar">
+        <div>
+          <h1>采集任务</h1>
+          <p id="statusText">读取中</p>
+        </div>
+      </header>
+
+      <section id="activeTask" class="section hidden">
+        <div class="task-name" id="taskName"></div>
+        <div class="meta">
+          <span id="recordCount">0 条</span>
+          <span id="idleText">--</span>
+        </div>
+        <button id="endTask" class="danger" type="button">结束并导出</button>
+        <p id="taskError" class="error-text" role="status"></p>
+      </section>
+
+      <section id="newTask" class="section">
+        <label for="taskInput">任务名</label>
+        <div class="row">
+          <input id="taskInput" type="text" maxlength="64" placeholder="例如：竞品评论观察">
+          <button id="startTask" type="button">新建</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>最近记录</h2>
+        <ol id="recordList" class="records"></ol>
+      </section>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+#xhs-radar-collect-button {
+  position: fixed;
+  z-index: 2147483647;
+  display: none;
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 10px;
+  background: #245f55;
+  color: #fff;
+  font: 650 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+}
+
+#xhs-radar-collect-button:hover {
+  background: #1f5249;
+}
+
+#xhs-radar-collect-button.xhs-radar-ok {
+  background: #2f7c46;
+}
+
+#xhs-radar-collect-button.xhs-radar-error {
+  background: #a33a34;
+}
+
+.xhs-radar-hover-target {
+  outline: 2px solid rgba(36, 95, 85, 0.78) !important;
+  outline-offset: 2px !important;
+}
+
+#xhs-radar-task-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 21, 26, 0.34);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+#xhs-radar-task-modal.xhs-radar-open {
+  display: flex;
+}
+
+.xhs-radar-task-card {
+  width: min(360px, calc(100vw - 32px));
+  border: 1px solid #dfded7;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
+  color: #1b1d22;
+  padding: 16px;
+}
+
+.xhs-radar-task-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 750;
+}
+
+.xhs-radar-task-input {
+  width: 100%;
+  border: 1px solid #d3d1ca;
+  border-radius: 7px;
+  color: #1b1d22;
+  font: inherit;
+  padding: 9px 10px;
+  outline: none;
+}
+
+.xhs-radar-task-input:focus {
+  border-color: #245f55;
+  box-shadow: 0 0 0 2px rgba(36, 95, 85, 0.14);
+}
+
+.xhs-radar-task-error {
+  min-height: 18px;
+  margin-top: 8px;
+  color: #a33a34;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.xhs-radar-task-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.xhs-radar-task-actions button {
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+  padding: 8px 12px;
+}
+
+.xhs-radar-task-cancel {
+  background: #efeee9;
+  color: #343740;
+}
+
+.xhs-radar-task-create {
+  background: #245f55;
+  color: #fff;
+}
