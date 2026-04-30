@@ -151,15 +151,6 @@ async function addRecord(record) {
   }
 }
 
-async function hasActiveTask() {
-  try {
-    const { currentTask } = await chrome.storage.local.get(["currentTask"]);
-    return Boolean(currentTask && currentTask.status === "active");
-  } catch (error) {
-    return false;
-  }
-}
-
 document.addEventListener("mouseover", (event) => {
   if (isExtensionNode(event.target) || isButtonVisible()) return;
 
@@ -218,12 +209,8 @@ button.addEventListener("click", async (event) => {
   if (!pendingRecord) return;
 
   const record = pendingRecord;
-  if (!(await hasActiveTask())) {
-    showTaskModal(record);
-    return;
-  }
-
   button.textContent = "保存中";
+  button.className = "";
   try {
     const response = await addRecord(record);
     if (!response?.ok) {
@@ -237,7 +224,7 @@ button.addEventListener("click", async (event) => {
     button.className = "xhs-radar-ok";
     setTimeout(hideButton, 650);
   } catch (error) {
-    showTaskModal(record);
+    showButtonError(error);
   }
 });
 
@@ -340,6 +327,12 @@ function hideTaskModal() {
   taskModal.error.textContent = "";
 }
 
+function showButtonError(error) {
+  button.textContent = "失败";
+  button.title = readableError(error);
+  button.className = "xhs-radar-error";
+}
+
 function defaultTaskName() {
   const now = new Date();
   const parts = new Intl.DateTimeFormat("zh-CN", {
@@ -361,5 +354,8 @@ function readableError(error) {
   if (message.includes("Extension context invalidated")) return "扩展刚刚更新过，请刷新页面后再试";
   if (message.includes("Receiving end does not exist")) return "后台未响应，请在扩展页重新加载插件后刷新页面";
   if (message.includes("Cannot access")) return "当前页面不允许扩展访问，请换普通网页或刷新后再试";
+  if (message.includes("kQuotaBytes") || message.includes("QUOTA") || message.includes("quota")) {
+    return "本地存储已满，请先结束并导出当前任务，或重新加载最新版插件";
+  }
   return message || "创建失败，请再试一次";
 }

@@ -3,7 +3,7 @@
   "name": "Web Radar Collector",
   "description": "Manual web page text and media collector for local research tasks.",
   "version": "0.1.0",
-  "permissions": ["alarms", "downloads", "scripting", "storage", "tabs"],
+  "permissions": ["alarms", "downloads", "scripting", "storage", "tabs", "unlimitedStorage"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_title": "Web Radar Collector",

@@ -137,7 +137,7 @@ async function captureElementScreenshot(rect, sender) {
       sourceWidth,
       sourceHeight
     );
-    const croppedBlob = await canvas.convertToBlob({ type: "image/png" });
+    const croppedBlob = await canvas.convertToBlob({ type: "image/jpeg", quality: 0.86 });
     return blobToDataUrl(croppedBlob);
   } catch (error) {
     return "";
